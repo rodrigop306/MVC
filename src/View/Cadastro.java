@@ -1,7 +1,7 @@
 package View;
 import java.util.Scanner;
 import Model.Pessoa;
-
+//
 public class Cadastro {
 	public Pessoa TelaCadastro() {
 		Scanner ler = new Scanner(System.in);

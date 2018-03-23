@@ -3,7 +3,7 @@ package Conexao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-//
+
 public class Conexao {
 	static Connection conn;
     private static final String USUARIO = "root";
