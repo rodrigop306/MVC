@@ -12,14 +12,16 @@ public class Conexao {
     private static final String DRIVER = "com.mysql.jdbc.Driver";
 
     // Conectar ao banco
-    public void abrir() throws Exception {
+    public Connection abrir() throws Exception {
         try {
         	Class.forName(DRIVER);
 			conn = DriverManager.getConnection(URL, USUARIO, SENHA);
 			System.out.println("Conectado!");
+			return conn;
 		}catch(SQLException ex) {
 			System.out.println("ERRO: "+ex);
 		}
+        return conn;
     }
     
     public void fechar() throws Exception{

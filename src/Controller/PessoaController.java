@@ -1,5 +1,7 @@
 package Controller;
 import java.util.Scanner;
+import java.sql.Connection;
+
 import Conexao.Conexao;
 import Model.Pessoa;
 import Model.PessoaDAO;
@@ -14,6 +16,8 @@ public class PessoaController {
 	public void cadastroPessoaController() throws Exception{
 		Cadastro c = new Cadastro();
 		Pessoa p = c.TelaCadastro();
+		System.out.println(p.getNome() +""+ p.getCpf()+""+ p.getIdade());
+		//Connection cp = conn.abrir();
 		PessoaDAO pd = new PessoaDAO();
 		pd.cadastrarPessoa(p);
 	}

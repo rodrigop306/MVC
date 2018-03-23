@@ -7,28 +7,29 @@ import Conexao.Conexao;
 import java.util.ArrayList;
 
 public class PessoaDAO {
-	Conexao conn;
+	Connection conn;
 	public PessoaDAO() {
 		super();
 	}
 	
-	public void cadastrarPessoa(Pessoa p) throws Exception{
-		conn = new Conexao();
-		conn.abrir();
-		conn.fechar();
+	public void cadastrarPessoa(Pessoa pe) throws Exception{
+		Conexao c = new Conexao();
+		conn = c.abrir();
+		PreparedStatement p =
+				   conn.prepareStatement("insert into pessoa (nomePessoa, cpfPessoa, idadePessoa) values (?,?,?)");
+				   p.setString(1, pe.getNome());
+				   p.setInt(2, pe.getCpf());
+				   p.setInt(3, pe.getIdade());
+				   p.executeUpdate();
+				   p.close();
 	}
 	
 	public Pessoa excluirPessoa(Pessoa p) throws Exception{
-		conn = new Conexao();
-		conn.abrir();
-		conn.fechar();
+		
 		return p;
 	}
 	
 	public List<Pessoa> buscarPessoas() throws Exception{
-		conn = new Conexao();
-		conn.abrir();
-		conn.fechar();
 		return null;
 		
 	}
