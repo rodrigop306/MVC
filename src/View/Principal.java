@@ -1,12 +1,12 @@
 package View;
 import java.util.Scanner;
-
+import Controller.PessoaController;
 import Conexao.Conexao;
 public class Principal {
 
 	public static void main(String[] args) throws Exception {
-		Conexao conn = new Conexao();
-		conn.abrir();
+		
+		
 		int opc=0;
 		Scanner ler = new Scanner(System.in);
 		while(opc!=4) {

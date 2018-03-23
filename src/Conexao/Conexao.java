@@ -5,28 +5,33 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexao {
-
+	static Connection conn;
     private static final String USUARIO = "root";
     private static final String SENHA = "";
     private static final String URL = "jdbc:mysql://localhost/bdMvc?autoReconnect=true&useSSL=false";
     private static final String DRIVER = "com.mysql.jdbc.Driver";
 
     // Conectar ao banco
-    public static Connection abrir() throws Exception {
-        Connection conexao = null;
+    public static void abrir() throws Exception {
         try {
         	Class.forName(DRIVER);
-			conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+			conn = DriverManager.getConnection(URL, USUARIO, SENHA);
 			System.out.println("Conectado!");
-			return conexao;
 		}catch(SQLException ex) {
 			System.out.println("ERRO: "+ex);
 		}
-        return conexao;
     }
     
     public void fechar() throws Exception{
-    	
+    	if(conn!=null){
+    		try{
+    			conn.close();
+    		}catch(Exception ex){
+    			System.out.println("Erro ao fechar conexao");
+    		}
+    	}else{
+    		System.out.println("Conexao inexistente");
+    	}
     }
 
 }
