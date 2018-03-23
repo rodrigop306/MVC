@@ -19,7 +19,6 @@ public class Principal {
 			case 1:
 				p.cadastroPessoaController();
 				break;
-				//
 			case 2:
 				p.excluiPessoaController();
 				break;

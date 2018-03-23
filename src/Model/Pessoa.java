@@ -1,10 +1,17 @@
 package Model;
 //
 public class Pessoa {
-	private int cpf;
+	private int id;
 	private String nome;
+	private int cpf;
 	private int idade;
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public int getCpf() {
 		return cpf;
 	}

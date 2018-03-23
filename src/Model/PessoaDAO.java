@@ -24,14 +24,32 @@ public class PessoaDAO {
 				   p.close();
 	}
 	
-	public Pessoa excluirPessoa(Pessoa p) throws Exception{
-		
-		return p;
+	public void excluirPessoa(int id) throws Exception{
+		try{
+			PreparedStatement p = conn.prepareStatement("delete from pessoa where id = ?");
+			p.setInt(1, id);
+			p.executeUpdate();
+			p.close();
+		}catch(Exception ex){
+			System.out.println("ERRO: Pessoa inválida");
+		}
 	}
 	
 	public List<Pessoa> buscarPessoas() throws Exception{
-		return null;
-		
+		List<Pessoa> pessoas = new ArrayList<Pessoa>();
+		PreparedStatement p = conn.prepareStatement("select * from pessoa");
+		ResultSet rs = p.executeQuery();
+		while(rs.next()){
+			Pessoa pe = new Pessoa();
+			pe.setId(rs.getInt("idPessoa"));
+			pe.setNome(rs.getString("nomePessoa"));
+			pe.setCpf(rs.getInt("cpfPessoa"));
+			pe.setIdade(rs.getInt("idadePessoa"));
+			pessoas.add(pe);
+		}
+		rs.close();
+		p.close();
+		return pessoas;		
 	}
 
 }
