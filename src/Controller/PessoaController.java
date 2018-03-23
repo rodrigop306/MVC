@@ -7,6 +7,8 @@ import Model.Pessoa;
 import Model.PessoaDAO;
 import View.Cadastro;
 
+
+//http://programadorprofissional.blogspot.com.es/2012/09/crud-no-banco-de-dados-com-java-e-jdbc.html
 public class PessoaController {
 	Conexao conn;
 	Scanner ler = new Scanner(System.in);
