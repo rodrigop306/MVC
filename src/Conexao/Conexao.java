@@ -12,7 +12,7 @@ public class Conexao {
     private static final String DRIVER = "com.mysql.jdbc.Driver";
 
     // Conectar ao banco
-    public static void abrir() throws Exception {
+    public void abrir() throws Exception {
         try {
         	Class.forName(DRIVER);
 			conn = DriverManager.getConnection(URL, USUARIO, SENHA);
