@@ -25,8 +25,10 @@ public class PessoaDAO {
 	}
 	
 	public void excluirPessoa(int id) throws Exception{
+		Conexao c = new Conexao();
+		conn = c.abrir();
 		try{
-			PreparedStatement p = conn.prepareStatement("delete from pessoa where id = ?");
+			PreparedStatement p = conn.prepareStatement("delete from pessoa where idPessoa = ?");
 			p.setInt(1, id);
 			p.executeUpdate();
 			p.close();
@@ -37,6 +39,8 @@ public class PessoaDAO {
 	
 	public List<Pessoa> buscarPessoas() throws Exception{
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
+		Conexao c = new Conexao();
+		conn = c.abrir();
 		PreparedStatement p = conn.prepareStatement("select * from pessoa");
 		ResultSet rs = p.executeQuery();
 		while(rs.next()){
